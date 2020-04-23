@@ -67,7 +67,7 @@ router.get('/', (req, res) => {
 // PUT: withdraw from account by number
 router.put('/withdraw/:accountNumber', (req, res) => {
     // res.send('withdrew from account');
-    AccountCollection.findOneAndUpdate({number: req.params.accountNumber},req.body,(errors,results) => {
+    AccountCollection.findOneAndUpdate({number: req.params.accountNumber},{balance: req.body.balance},(errors,results) => {
         errors ? res.send(errors):res.send(`withdrew from the following account: ${results}`);
     });
 });
@@ -75,8 +75,24 @@ router.put('/withdraw/:accountNumber', (req, res) => {
 // PUT: deposit into account by number
 router.put('/deposit/:accountNumber', (req, res) => {
     // res.send('deposit into account');
-    AccountCollection.findOneAndUpdate({number: req.params.accountNumber},req.body,(errors,results) => {
+    AccountCollection.findOneAndUpdate({number: req.params.accountNumber},{balance: req.body.balance},(errors,results) => {
         errors ? res.send(errors):res.send(`deposited into the following account: ${results}`);
+    });
+});
+
+// PUT: update account by number
+router.put('/:accountNumber', (req,res) => {
+    // res.send('account updated');
+    AccountCollection.findOneAndUpdate({number: req.params.accountNumber},req.body,(errors,results) => {
+        errors ? res.send(errors):res.send(`updated the following account: ${results}`);
+    })
+});
+
+// DELETE: delete an account by number
+router.delete('/:accountNumber', (req,res) => {
+    // res.send('account deleted');
+    AccountCollection.findOneAndDelete({number: req.params.accountNumber},req.body,(errors,results) => {
+        errors ? res.send(errors):res.send(`deleted the following account: ${results}`);
     });
 });
 

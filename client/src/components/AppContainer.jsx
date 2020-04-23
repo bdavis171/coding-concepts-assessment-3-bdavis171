@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom';
 import AccountList from './AccountList';
 import AddAccountForm from './AddAccountForm';
+import UpdateAccountForm from './UpdateAccountForm';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -37,6 +38,7 @@ class AppContainer extends Component {
         console.table(json);
     }
 
+    // display page
     render() { 
         return ( 
             <div>
@@ -52,6 +54,7 @@ class AppContainer extends Component {
                         <div id="pageDisplay">
                             <Route path='/accountList'><AccountList bankAccountList={this.state.bankAccountList}/></Route>
                             <Route path='/addAccountForm'><AddAccountForm addAccount={this.addAccount}/></Route>
+                            
                         </div>
                     </div>
                 </Router>

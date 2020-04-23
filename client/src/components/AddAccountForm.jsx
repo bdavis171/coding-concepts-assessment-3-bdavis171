@@ -45,6 +45,7 @@ class AddAccountForm extends Component {
         window.location.replace('/accountList');
     }
     
+    // display page
     render() { 
         return ( 
             <div>
