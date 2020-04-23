@@ -4,13 +4,17 @@ import React, { Component } from 'react';
 class UpdateAccountForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            number: this.props.account.number,
+            name: this.props.account.name,
+            
+         }
     }
     
     render() { 
         return ( 
             <div>
-                <h1>hello</h1>
+               
             </div>
          );
     }
